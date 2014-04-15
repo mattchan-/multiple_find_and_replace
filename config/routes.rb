@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :templates, only: [:new, :create, :index]
+
+  root 'static_pages#home'
+
+  get '/help', to: 'static_pages#help'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
