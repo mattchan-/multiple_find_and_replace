@@ -1,0 +1,13 @@
+<div class="container" id="container">
+  <textarea id="original"></textarea>
+  <textarea id="final"></textarea>
+
+  <button id="button">Replace!</button><br/>
+
+  <% x = (1..10).to_a %>
+  <% x.each_with_index do |item, index| %>
+    <label><%= "{a" + (index + 1).to_s + "}" %></label><input type='text' id="<%= 'a' + (index + 1).to_s %>" class='replace_element'>
+  <% end %>
+
+  <button id="addItem">Add Item</button><br/>
+</div>

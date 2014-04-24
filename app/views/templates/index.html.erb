@@ -1,0 +1,13 @@
+<% provide(:title, 'All Templates') %>
+
+<div class = "row">
+  <% @templates.each do |t| %>
+    <div class="col-lg-2 col-lg-offset-2">
+      <b><%= t.name %></b><br/>
+      <%= link_to "Open Template", template_path(t) %>
+    </div>
+    <div class="col-lg-6">
+      <textarea rows="10"><%= t.content %></textarea>
+    </div>
+  <% end %>
+</div>

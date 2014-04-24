@@ -1,0 +1,40 @@
+<div class="container" id="container">
+  <div class="row">
+    <div class="col-lg-3 col-lg-offset-3">
+      <textarea rows="10" id="original"><%= @template.content %></textarea>
+    </div>
+    <div class="col-lg-3">
+      <textarea rows="10" id="final"></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+      <%= form_tag mass_update_tag_path, method: :put do %>
+        <% count = @tags.count %>
+        <% @tags.each_with_index do |tag, index| %>
+          <% break if index == count %>
+          <label><%= "{a" + (index + 1).to_s + "}" %> <%= tag.description %></label>
+          <%= hidden_field_tag "tag_id[]", tag.id %>
+          <%= text_field_tag "content[]", tag.content, class: "replace_element" %>
+        <% end %>
+        <%= submit_tag "Update Tags" %>
+      <% end %>
+
+      <button id="button" class="btn btn-primary">Replace!</button>
+
+      <hr>
+      <h3>Add Tag</h3>
+      <%= form_for(@tag, url: tags_path(template_id: @template)) do |f| %>
+        <%= render "shared/error_messages", object: f.object %>
+        <label><%= "{a" + (@tags.count + 1).to_s + "}" %></label>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+
+        <%= f.label :content %>
+        <%= f.text_area :content, rows: 10 %>
+
+        <%= f.submit "Add Tag", class: "btn btn-large btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

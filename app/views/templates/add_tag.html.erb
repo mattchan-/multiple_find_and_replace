@@ -1,0 +1,18 @@
+<% provide(:title, 'Add Tag') %>
+
+<div class = "row">
+  <div class="col-lg-6 col-lg-offset-3">
+    <h1>Add Template</h1>
+    <hr>
+    <%= form_for(@tag, url: tags_path(template_id: @template)) do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+
+      <%= f.label :content %>
+      <%= f.text_area :content, rows: 10 %>
+
+      <%= f.submit "Add Tag", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
