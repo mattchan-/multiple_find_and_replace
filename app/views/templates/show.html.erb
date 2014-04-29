@@ -1,15 +1,16 @@
 <div class="container" id="container">
+  <h2><%= @template.name %></h2>
   <div class="row">
-    <div class="col-lg-3 col-lg-offset-3">
+    <div class="col-lg-6">
       <textarea rows="10" id="original"><%= @template.content %></textarea>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-6">
       <textarea rows="10" id="final"></textarea>
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-6 col-lg-offset-3">
-      <%= form_tag mass_update_tag_path, method: :put do %>
+    <div class="col-lg-6">
+      <%= form_tag mass_update_tag_path, method: :put, id: "update_tag_form" do %>
         <% count = @tags.count %>
         <% @tags.each_with_index do |tag, index| %>
           <% break if index == count %>
@@ -17,10 +18,12 @@
           <%= hidden_field_tag "tag_id[]", tag.id %>
           <%= text_field_tag "content[]", tag.content, class: "replace_element" %>
         <% end %>
-        <%= submit_tag "Update Tags" %>
       <% end %>
 
-      <button id="button" class="btn btn-primary">Replace!</button>
+      <div class="row">
+        <div class="col-lg-6"><%= button_tag "Update Tags", id: "submit_updates", class: "btn btn-primary" %></div>
+        <div class="col-lg-6 "><%= button_tag "Replace!", id: "button", class: "btn btn-primary" %></div>
+      </div>
 
       <hr>
       <h3>Add Tag</h3>

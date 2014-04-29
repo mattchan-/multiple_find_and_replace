@@ -12,3 +12,7 @@ $ ->
       re = new RegExp("{a" + index + "}", "g")
       replaced = replaced.replace(re, temp)
     document.getElementById("final").value = replaced
+
+$ ->
+  $('#submit_updates').click ->
+    $('#update_tag_form').submit()

@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  resources :templates, only: [:new, :create, :index, :show] do
-    member do
-    end
-  end
+  resources :templates, only: [:new, :create, :index, :show]
 
   resources :tags, only: [:create] do
     member do

@@ -22,7 +22,7 @@ class TemplatesController < ApplicationController
     @tags = @template.tags
     @tag = @template.tags.build
   end
-
+  
   private
     def template_params
       params.require(:template).permit(:name, :content, tag_attributes: [:description, :template_id, :content])
